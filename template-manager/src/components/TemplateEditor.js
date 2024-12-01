@@ -21,7 +21,7 @@ function TemplateEditor() {
         .then(() => navigate('/'))
         .catch(error => console.error('Error updating template:', error));
     } else {
-      axios.post('http://localhost:8000/api/templates',template)
+      axios.post('http://localhost:8000/api/createTemplate',template)
         .then(() => navigate('/'))
         .catch(error => console.error('Error saving template:', error));
     }

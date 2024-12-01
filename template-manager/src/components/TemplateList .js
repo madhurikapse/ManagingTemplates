@@ -7,7 +7,7 @@ function TemplateList() {
   const [tab, setTab] = useState('library');
 
   useEffect(() => {
-    axios.get('/api/templates')
+    axios.get('http://localhost:8000/api/templates')
       .then(response => setTemplates(response.data))
       .catch(error => console.error('Error fetching templates:', error));
   }, []);
@@ -20,12 +20,11 @@ function TemplateList() {
       </div>
       <div>
         {templates
-          .filter(template => template.type === tab)
           .map(template => (
             <div key={template.id} className="template-card">
               <h3>{template.name}</h3>
-              <p>Created on: {new Date(template.created_at).toLocaleDateString()}</p>
-              <Link to={`/editor/${template.id}`}>Edit Template</Link>
+              <p>Created on: {new Date(template.createdAt).toLocaleDateString()}</p>
+              <Link to={`/editor/${template._id}`}>Edit Template</Link>
             </div>
           ))}
       </div>

@@ -1,8 +1,7 @@
-const Template = require("../model/templateModel");
+import Template from "../model/templateModel.js";
 
-
-// Get all templates
-exports.getTemplates = async (req, res) => {
+// // Get all templates
+export const getTemplates = async (req, res) => {
   try {
     const templates = await Template.find();
     res.status(200).json(templates);
@@ -11,8 +10,8 @@ exports.getTemplates = async (req, res) => {
   }
 };
 
-// Create a new template
-exports.createTemplate = async (req, res) => {
+// // Create a new template
+export const createTemplate = async (req, res) => {
   try {
     const { name, content } = req.body;
     const newTemplate = new Template({ name, content });
@@ -23,8 +22,8 @@ exports.createTemplate = async (req, res) => {
   }
 };
 
-// Update a template
-exports.updateTemplate = async (req, res) => {
+// // Update a template
+export const updateTemplate = async (req, res) => {
   const { id } = req.params;
   const { name, content } = req.body;
   try {
@@ -37,6 +36,6 @@ exports.updateTemplate = async (req, res) => {
     await template.save();
     res.status(200).json(template);
   } catch (err) {
-    res.status(500).json({ message: 'Error updating template' });
-  }
+    res.status(500).json({ message: 'Error updating template' });
+  }
 };

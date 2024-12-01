@@ -1,14 +1,17 @@
-const express = require("express");
-const mongoose = require("mongoose");
-const cors = require("cors");
-const { route } = require("./routes/templateRoutes");
+import express from 'express'
+import mongoose from 'mongoose';
+import cors from 'cors';
+import env from 'dotenv'
+import router from './routes/templateRoutes.js';
+
+
 const app = express();
-require("dotenv").config();
+env.config();
+app.use(express.json());
 const port = process.env.PORT || 3000;
 const mongoUrl = process.env.MONGODB_URL;
 
 app.use(cors());
-app.use("/api",route)
 
 mongoose
   .connect(mongoUrl)
@@ -20,14 +23,8 @@ mongoose
   });
 
 
-// app.get("/", (req, res) => {
-//   res.send("Hello madhuri kapse!");
-// });
-
-
-
-
+app.use("/api",router)
 
 app.listen(port, () => {
     console.log(`Server running on http://localhost:${port}`);
-  });
+  });
