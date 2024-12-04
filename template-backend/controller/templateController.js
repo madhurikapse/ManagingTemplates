@@ -13,8 +13,8 @@ export const getTemplates = async (req, res) => {
 // // Create a new template
 export const createTemplate = async (req, res) => {
   try {
-    const { name, content } = req.body;
-    const newTemplate = new Template({ name, content });
+    const { name, content,image_url} = req.body;
+    const newTemplate = new Template({ name, content,image_url  });
     await newTemplate.save();
     res.status(201).json(newTemplate);
   } catch (err) {
