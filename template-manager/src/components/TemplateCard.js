@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import "./card.css"
+import './Card.css';
 function TemplateCard({ template }) {
   const { id, name, created_at, type } = template;
 

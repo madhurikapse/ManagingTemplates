@@ -1,15 +1,14 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import TemplateList from './components/TemplateList ';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import TemplateEditor from './components/TemplateEditor';
-
+import TemplateList from './components/TemplateList ';
 
 function App() {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<TemplateList/>} />
-        <Route path="/editor/:id?" element={<TemplateEditor/>} />
+        <Route path="/editor/:id" element={<TemplateEditor/>} />
+        <Route path="/editor" element={<TemplateEditor/>} />
       </Routes>
     </Router>
   );
